@@ -1,0 +1,978 @@
+{
+  "swagger": "2.0"
+  , "info": {
+    "version": "1.0"
+    , "title": "Centinela"
+    , "contact": {
+
+    }
+  }
+  , "host": "{{url}}"
+  , "basePath": "/api/v1"
+  , "schemes": [
+    "http"
+  ]
+  , "consumes": [
+    "application/json"
+  ]
+  , "produces": [
+    "application/json"
+  ]
+  , "paths": {
+    "/api/v1/login": {
+      "post": {
+        "summary": "Login"
+        , "tags": [
+          "Login"
+        ]
+        , "operationId": "Login"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Body"
+          , "in": "body"
+          , "required": true
+          , "schema": {
+            "$ref": "#/definitions/LoginRequest"
+          }
+        }]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+        }
+      }
+    }
+    , "/api/v1/bugs": {
+      "post": {
+        "summary": "Create bug"
+        , "tags": [
+          "Bugs"
+        ]
+        , "operationId": "Createbug"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "keyConnection"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "Body"
+          , "in": "body"
+          , "required": true
+          , "schema": {
+            "$ref": "#/definitions/CreatebugRequest"
+          }
+        }]
+        , "responses": {
+          "201": {
+            "description": "Created"
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+      }
+      , "get": {
+        "summary": "Get all bugs"
+        , "tags": [
+          "Bugs"
+        ]
+        , "operationId": "Getallbugs"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "state"
+          , "in": "query"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "order"
+          , "in": "query"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": "Ok"
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/api/v1/bugs/:id": {
+      "put": {
+        "summary": "Update bug"
+        , "tags": [
+          "Bugs"
+        ]
+        , "operationId": "Updatebug"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "Body"
+          , "in": "body"
+          , "required": true
+          , "schema": {
+            "$ref": "#/definitions/UpdatebugRequest"
+          }
+        }]
+        , "responses": {
+          "200": {
+            "description": "Ok"
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/bugs/:id": {
+      "get": {
+        "summary": "Get bug"
+        , "tags": [
+          "Bugs"
+        ]
+        , "operationId": "Getbug"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": "OK"
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/api/v1/invitations/:id": {
+      "post": {
+        "summary": "Accept invitation"
+        , "tags": [
+          "Invitations"
+        ]
+        , "operationId": "Acceptinvitation"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "Body"
+          , "in": "body"
+          , "required": true
+          , "schema": {
+            "$ref": "#/definitions/AcceptinvitationRequest"
+          }
+        }]
+        , "responses": {
+          "201": {
+            "description": "Created"
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/api/v1/invitations": {
+      "post": {
+        "summary": "Create invitation"
+        , "tags": [
+          "Invitations"
+        ]
+        , "operationId": "Createinvitation"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "Body"
+          , "in": "body"
+          , "required": true
+          , "schema": {
+            "$ref": "#/definitions/CreateinvitationRequest"
+          }
+        }]
+        , "responses": {
+          "201": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/api/v1/invitations/:id": {
+      "get": {
+        "summary": "Get invitation"
+        , "tags": [
+          "Invitations"
+        ]
+        , "operationId": "Getinvitation"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": "Created"
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/api/v1/ping": {
+      "get": {
+        "summary": "Is alive"
+        , "tags": [
+          "Is alive"
+        ]
+        , "operationId": "Isalive"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [
+
+        ]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+      }
+    }
+    , "/api/v1/organizations/:id": {
+      "get": {
+        "summary": "Get organization"
+        , "tags": [
+          "Organizations"
+        ]
+        , "operationId": "Getorganization"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [
+
+        ]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+      }
+    }
+    , "/api/v1/users": {
+      "post": {
+        "summary": "Create user with organization"
+        , "tags": [
+          "Users"
+        ]
+        , "operationId": "Createuserwithorganization"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Body"
+          , "in": "body"
+          , "required": true
+          , "schema": {
+            "$ref": "#/definitions/CreateuserwithorganizationRequest"
+          }
+        }]
+        , "responses": {
+          "201": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+      }
+    }
+    , "/users": {
+      "get": {
+        "summary": "Get users"
+        , "tags": [
+          "Users"
+        ]
+        , "operationId": "Getusers"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/api/v1/reports/critical": {
+      "get": {
+        "summary": "Critical errors report"
+        , "tags": [
+          "Reports"
+        ]
+        , "operationId": "Criticalerrorsreport"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "keyConnection"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+      }
+    }
+    , "/api/v1/reports/statistics": {
+      "get": {
+        "summary": "Statistics errors report"
+        , "tags": [
+          "Reports"
+        ]
+        , "operationId": "Statisticserrorsreport"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "dateFrom"
+          , "in": "query"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "dateTo"
+          , "in": "query"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/api/v1/systems": {
+      "post": {
+        "summary": "Create system"
+        , "tags": [
+          "Systems"
+        ]
+        , "operationId": "Createsystem"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "Body"
+          , "in": "body"
+          , "required": true
+          , "schema": {
+            "$ref": "#/definitions/CreatesystemRequest"
+          }
+        }]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+      , "get": {
+        "summary": "Get systems"
+        , "tags": [
+          "Systems"
+        ]
+        , "operationId": "Getsystems"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/api/v1/systems/:id/environments": {
+      "post": {
+        "summary": "Create an environment in a system"
+        , "tags": [
+          "Systems"
+        ]
+        , "operationId": "Createanenvironmentinasystem"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }, {
+          "name": "Body"
+          , "in": "body"
+          , "required": true
+          , "schema": {
+            "$ref": "#/definitions/CreateanenvironmentinasystemRequest"
+          }
+        }]
+        , "responses": {
+          "201": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+      , "get": {
+        "summary": "Get environments from a system"
+        , "tags": [
+          "Systems"
+        ]
+        , "operationId": "Getenvironmentsfromasystem"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+    , "/monitoring/v1/ping": {
+      "get": {
+        "summary": "Monitoring"
+        , "tags": [
+          "Monitoring"
+        ]
+        , "operationId": "Monitoring"
+        , "deprecated": false
+        , "produces": [
+          "application/json"
+        ]
+        , "parameters": [{
+          "name": "Authorization"
+          , "in": "header"
+          , "required": true
+          , "type": "string"
+        }]
+        , "responses": {
+          "200": {
+            "description": ""
+            , "headers": {
+
+            }
+          }
+          , "400": {
+            "description": "Error"
+            , "headers": {
+
+            }
+          }
+        }
+        , "security": [
+
+        ]
+      }
+    }
+  }
+  , "definitions": {
+    "LoginRequest": {
+      "title": "LoginRequest"
+      , "example": {
+        "email": "iamaemail@email.com"
+        , "password": "123456"
+      }
+      , "type": "object"
+      , "properties": {
+        "email": {
+          "type": "string"
+        }
+        , "password": {
+          "type": "string"
+        }
+      }
+      , "required": [
+        "email"
+        , "password"
+      ]
+    }
+    , "CreatebugRequest": {
+      "title": "CreatebugRequest"
+      , "example": {
+        "title": "{{$randomCompanyName}}"
+        , "description": "{{$randomLoremSentences}}"
+        , "severity": 2
+      }
+      , "type": "object"
+      , "properties": {
+        "title": {
+          "type": "string"
+        }
+        , "description": {
+          "type": "string"
+        }
+        , "severity": {
+          "type": "integer"
+          , "format": "int32"
+        }
+      }
+      , "required": [
+        "title"
+        , "description"
+        , "severity"
+      ]
+    }
+    , "UpdatebugRequest": {
+      "title": "UpdatebugRequest"
+      , "example": {
+        "title": "Title of bug"
+        , "description": "This a bug"
+        , "severity": 4
+        , "state": {
+          "id": 2
+        }
+      }
+      , "type": "object"
+      , "properties": {
+        "title": {
+          "type": "string"
+        }
+        , "description": {
+          "type": "string"
+        }
+        , "severity": {
+          "type": "integer"
+          , "format": "int32"
+        }
+        , "state": {
+          "$ref": "#/definitions/State"
+        }
+      }
+      , "required": [
+        "title"
+        , "description"
+        , "severity"
+        , "state"
+      ]
+    }
+    , "State": {
+      "title": "State"
+      , "example": {
+        "id": 2
+      }
+      , "type": "object"
+      , "properties": {
+        "id": {
+          "type": "integer"
+          , "format": "int32"
+        }
+      }
+      , "required": [
+        "id"
+      ]
+    }
+    , "AcceptinvitationRequest": {
+      "title": "AcceptinvitationRequest"
+      , "example": {
+        "email": "email@email"
+        , "name": "Jon Doe"
+        , "password": "dkaidj@sdadask!"
+      }
+      , "type": "object"
+      , "properties": {
+        "email": {
+          "type": "string"
+        }
+        , "name": {
+          "type": "string"
+        }
+        , "password": {
+          "type": "string"
+        }
+      }
+      , "required": [
+        "email"
+        , "name"
+        , "password"
+      ]
+    }
+    , "CreateinvitationRequest": {
+      "title": "CreateinvitationRequest"
+      , "example": {
+        "email": "email@email.com"
+        , "role": 2
+      }
+      , "type": "object"
+      , "properties": {
+        "email": {
+          "type": "string"
+        }
+        , "role": {
+          "type": "integer"
+          , "format": "int32"
+        }
+      }
+      , "required": [
+        "email"
+        , "role"
+      ]
+    }
+    , "CreateuserwithorganizationRequest": {
+      "title": "CreateuserwithorganizationRequest"
+      , "example": {
+        "name": "Jhon Doe"
+        , "user": {
+          "name": "User"
+          , "email": "email@email"
+          , "password": "123456"
+        }
+      }
+      , "type": "object"
+      , "properties": {
+        "name": {
+          "type": "string"
+        }
+        , "user": {
+          "$ref": "#/definitions/User"
+        }
+      }
+      , "required": [
+        "name"
+        , "user"
+      ]
+    }
+    , "User": {
+      "title": "User"
+      , "example": {
+        "name": "Manuel"
+        , "email": "email@email.com"
+        , "password": "123456"
+      }
+      , "type": "object"
+      , "properties": {
+        "name": {
+          "type": "string"
+        }
+        , "email": {
+          "type": "string"
+        }
+        , "password": {
+          "type": "string"
+        }
+      }
+      , "required": [
+        "name"
+        , "email"
+        , "password"
+      ]
+    }
+    , "CreatesystemRequest": {
+      "title": "CreatesystemRequest"
+      , "example": {
+        "name": "New system"
+      }
+      , "type": "object"
+      , "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+      , "required": [
+        "name"
+      ]
+    }
+    , "CreateanenvironmentinasystemRequest": {
+      "title": "CreateanenvironmentinasystemRequest"
+      , "example": {
+        "name": "Develop"
+      }
+      , "type": "object"
+      , "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+      , "required": [
+        "name"
+      ]
+    }
+  }
+  , "tags": [{
+    "name": "Login"
+  }, {
+    "name": "Bugs"
+  }, {
+    "name": "Invitations"
+  }, {
+    "name": "Is alive"
+  }, {
+    "name": "Organizations"
+  }, {
+    "name": "Users"
+  }, {
+    "name": "Reports"
+  }, {
+    "name": "Systems"
+  }, {
+    "name": "Monitoring"
+  }]
+}

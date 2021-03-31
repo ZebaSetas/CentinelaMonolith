@@ -1,0 +1,47 @@
+
+
+/bugs
+	POST - RF9 -Para crear 1 nuevo bug
+	GET - RF6 - Para listar los bugs
+			Con paginacion y filtros
+
+/bugs/detail
+	GET - RF7 - Para obtener todos los detalles del error
+	PUT - RF8 y RF5 - Para editar( solo admins )  y poder marcar error como resuelto ( todos )
+
+
+/reports/bugs
+	GET -RF11 - para obtener reportes WEB
+		Con filtro de fechas
+/reports/critical
+	GET - RF10 para obtener los 5 errores no resueltos
+
+/keys
+	POST - RF4 - para crear nuevas claves de uso
+	GET - Obtener todas las claves de una organizacion
+
+/users
+	POST - RF1 para crear nuevo admin en nueva organizacion
+	GET - para obtener la lista de usuarios de una organizacion
+
+/invites
+	(Requiere login)
+	POST - RF2 - para crear nuevos usuarios mediante invitacion
+
+/invites/id
+	GET - Retorna los datos y el estado de una invitacion por su id
+	POST - Confirma una invitacion y da de alta un usuario
+
+/login
+	POST - RF3 para permitir a un usuario hacer login
+
+/systems
+	(Requiere login)
+	POST - Crea un nuevo sistema para la organizacion del usuario logueado
+		Usa el token del usuario para reconocer la organizacion del admin
+
+	(Requiere login)
+	GET - Lista todos los sistemas que tiene la organizacion del usuario logueado
+
+
+	

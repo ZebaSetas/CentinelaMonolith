@@ -1,0 +1,887 @@
+{
+	"info": {
+		"_postman_id": "8013fc23-ccc7-42ac-9ddc-53e40af87287",
+		"name": "Centinela",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1c62a4c2-4bfa-4cee-8226-a8ab34749b01",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"Authorization\", jsonData.authorization);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"elyuyo1@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Bugs",
+			"item": [
+				{
+					"name": "Create bug",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "keyConnection",
+								"type": "text",
+								"value": "{{keyConnection}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomCompanyName}}\",\r\n    \"description\": \"{{$randomLoremSentences}}\",\r\n    \"severity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/bugs",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bugs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update bug",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"dpscwbwwqv\",\r\n    \"description\":\"ngebdowzxeiczsrzxpxejmgweazsnlccqmfqdwknoaebdsmcepiledexpgbrqochfuvdcfsjwbftccoramtqhgccblzppkneappr\",\r\n    \"severity\":4,\r\n    \"state\": {\r\n            \"id\": 2            \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/bugs/191975",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bugs",
+								"191975"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all bugs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{url}}/api/v1/bugs?state=completed&order=severity_asc",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bugs"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "completed"
+								},
+								{
+									"key": "order",
+									"value": "severity_asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pendig bugs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{url}}/api/v1/bugs?state=pending&limit=7&offset=1&order=severity_desc",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bugs"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "pending"
+								},
+								{
+									"key": "limit",
+									"value": "7"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								},
+								{
+									"key": "accessToken",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "severity_desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get completed bugs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{url}}/api/v1/bugs",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bugs"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get bug",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{url}}/api/v1/bugs/40",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bugs",
+								"40"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Invitations",
+			"item": [
+				{
+					"name": "Accept invitation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6c6457f-844e-44ce-b600-1774452224fc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mlsettimo1@gmail.com\",\r\n    \"name\": \"Maias\",\r\n    \"password\": \"bobaina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/invitations/17",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"invitations",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create invitation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75416644-e5cd-4313-9c3c-3d713749e150",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mlsettimo1@gmail.com\",\r\n    \"role\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/invitations",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"invitations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get invitation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dae52333-79ea-4f10-a1cb-8e028620381f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/invitations/5",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"invitations",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Centinela Is alive?",
+			"item": [
+				{
+					"name": "Is alive",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXIiOnsibmFtZSI6IlNlYmFzdGlhbiBaYXdyeXprcmFqIiwiZW1haWwiOiJzZWJhc3RpYW56YXdyenlrcmFqQGdtYWlsLmNvbSIsImlkIjoxLCJyb2xlIjoxfSwib3JnYW5pemF0aW9uSWQiOjF9LCJleHAiOjEwMDAwMDAwMTYwMzAzODkwMCwiaWF0IjoxNjAzMDM4ODk1fQ.88JFLNp9kDZn1PgJvjf2RkGnRrr5v3plzBZbUt533Xc",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{url}}/api/v1/ping",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Organizations",
+			"item": [
+				{
+					"name": "Get organization",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"De Matias 3\",\r\n    \"user\": {\r\n        \"name\": \"Manuel\",\r\n        \"email\": \"elyuyo1@gmail.com\",\r\n        \"password\": \"123456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/organizations/1",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create user with organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb98f87f-a241-48c3-b7f5-1afe5c5b45a9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"De Matias 3\",\r\n    \"user\": {\r\n        \"name\": \"Manuel\",\r\n        \"email\": \"elyuyo1@gmail.com\",\r\n        \"password\": \"123456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Critical errors report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "keyConnection",
+								"type": "text",
+								"value": "{{keyConnection}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{url}}/api/v1/reports/critical",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"critical"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Statistics errors report",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "76ca30ef-b8bd-432c-9d05-3500a795630c",
+								"exec": [
+									"const moment = require('moment');\r",
+									"pm.globals.set(\"today\", moment().format(\"DD/MM/YYYY\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{url}}/api/v1/reports/statistics?dateFrom=01/10/2020&dateTo={{today}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"statistics"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "01/10/2020"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{today}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Systems",
+			"item": [
+				{
+					"name": "Create system",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nuevo Systema\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/systems",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"systems"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get systems",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/systems",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"systems"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create an environment in a system",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "abeb7410-e731-49df-b5a9-bcb0734396d4",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"keyConnection\", jsonData.environment.keyConnection);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Develop\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/api/v1/systems/3/environments",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"systems",
+								"3",
+								"environments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get environments from a system",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{Authorization}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{url}}/api/v1/systems/3/environments",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"systems",
+								"3",
+								"environments"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Monitoring",
+			"item": [
+				{
+					"name": "Monitoring",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXIiOnsibmFtZSI6IlNlYmFzdGlhbiBaYXdyeXprcmFqIiwiZW1haWwiOiJzZWJhc3RpYW56YXdyenlrcmFqQGdtYWlsLmNvbSIsImlkIjoxLCJyb2xlIjoxfSwib3JnYW5pemF0aW9uSWQiOjF9LCJleHAiOjEwMDAwMDAwMTYwMzAzODkwMCwiaWF0IjoxNjAzMDM4ODk1fQ.88JFLNp9kDZn1PgJvjf2RkGnRrr5v3plzBZbUt533Xc"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{url_monitoring}}/monitoring/v1/ping",
+							"protocol": "http",
+							"host": [
+								"{{url_monitoring}}"
+							],
+							"path": [
+								"monitoring",
+								"v1",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

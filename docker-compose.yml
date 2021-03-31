@@ -1,0 +1,73 @@
+version: "3.7"
+services: 
+    centinela-api:
+        build: ./backend
+        container_name: centinela-api
+        command: ["node", "src/index.js"]
+        env_file:
+             - centinela.env
+        ports: 
+            - "5000:5000"
+        depends_on: 
+            - redis
+        networks: 
+            - centinela-net
+    centinela-sender:
+        build: ./backend
+        container_name: centinela-sender
+        command: ["node", "src/sender.js"]
+        env_file:
+             - centinela.env
+        ports: 
+            - "5002:5002"
+        depends_on: 
+                - redis
+        networks: 
+            - centinela-net
+    centinela-monitor:
+        build: ./backend
+        container_name: centinela-monitor
+        command: ["node", "src/monitoring.js"]
+        env_file:
+             - centinela.env
+        ports: 
+            - "5001:5001"
+        depends_on: 
+                - redis
+                - centinela-sender
+                - centinela-api
+                - centinela-bugprocessor
+        networks: 
+            - centinela-net
+    centinela-bugprocessor:
+        build: ./backend
+        container_name: centinela-bugprocessor
+        command: ["node", "src/bugProcessor.js"]
+        env_file:
+             - centinela.env
+        depends_on: 
+                - redis
+        networks: 
+            - centinela-net
+    nginx:
+        build: ./nginx
+        container_name: nginx
+        ports:
+            - "80:80"
+        depends_on: 
+            - centinela-monitor
+        networks: 
+        - centinela-net
+    redis:
+        container_name: redis
+        image: redis:5.0.6
+        ports:
+            - 6379:6379
+        volumes:
+            - ./redis:/redis
+        command: [ "redis-server"]
+        networks: 
+           - centinela-net
+networks:
+    centinela-net:
+        name: centinela-net
